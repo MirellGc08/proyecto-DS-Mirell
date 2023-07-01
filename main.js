@@ -7,7 +7,7 @@ characterArray = JSON.parse(localStorage.getItem('characterData')) || [];
 // Obtener el formulario y agregar un evento de envío
 const characterRegistry = document.getElementById('characterRegistry');
 
-characterRegistry.addEventListener('submit', function(event) {
+characterRegistry.addEventListener('submit', function (event) {
   event.preventDefault(); // Prevenir el envío del formulario
 
   // Obtener los valores de los campos del formulario
@@ -99,76 +99,76 @@ const updateCharacterList = () => {
     row.appendChild(statusCell);
 
     const actionsCell = document.createElement('td');
-    actionsCell.classList.add( 'text-center');
+    actionsCell.classList.add('text-center');
 
-   // Crear un botón de edición para cada personaje
-const editButton = document.createElement('button');
-editButton.innerHTML = '<i class="fas fa-edit"></i>'; // Icono de lápiz
-editButton.classList.add('btn', 'btn-primary', 'mr-2');
-editButton.addEventListener('click', () => {
-  const characterIndex = characterArray.findIndex((c) => c.nombre === character.nombre);
-  if (characterIndex !== -1) {
-    // Mostrar el modal de edición
-    const fieldToEdit = prompt("¿Qué desea editar?\n1. Nombre\n2. Edad\n3. Quirk\n4. Categoría\n5. Estado");
+    // Crear un botón de edición para cada personaje
+    const editButton = document.createElement('button');
+    editButton.innerHTML = '<i class="fas fa-edit"></i>'; // Icono de lápiz
+    editButton.classList.add('btn', 'btn-primary', 'mr-2');
+    editButton.addEventListener('click', () => {
+      const characterIndex = characterArray.findIndex((c) => c.nombre === character.nombre);
+      if (characterIndex !== -1) {
+        // Mostrar el modal de edición
+        const fieldToEdit = prompt("¿Qué desea editar?\n1. Nombre\n2. Edad\n3. Quirk\n4. Categoría\n5. Estado");
 
-    if (fieldToEdit !== null) {
-      let newValue;
-      switch (fieldToEdit) {
-        case "1":
-          newValue = prompt("Ingrese el nuevo nombre:");
-          break;
-        case "2":
-          newValue = prompt("Ingrese la nueva edad:");
-          break;
-        case "3":
-          newValue = prompt("Ingrese el nuevo quirk:");
-          break;
-        case "4":
-          newValue = prompt("Ingrese la nueva categoría:");
-          break;
-        case "5":
-          newValue = prompt("Ingrese el nuevo estado:");
-          break;
-        default:
-          alert("Opción inválida.");
-          return;
-      }
+        if (fieldToEdit !== null) {
+          let newValue;
+          switch (fieldToEdit) {
+            case "1":
+              newValue = prompt("Ingrese el nuevo nombre:");
+              break;
+            case "2":
+              newValue = prompt("Ingrese la nueva edad:");
+              break;
+            case "3":
+              newValue = prompt("Ingrese el nuevo quirk:");
+              break;
+            case "4":
+              newValue = prompt("Ingrese la nueva categoría:");
+              break;
+            case "5":
+              newValue = prompt("Ingrese el nuevo estado:");
+              break;
+            default:
+              alert("Opción inválida.");
+              return;
+          }
 
-      // Verificar si se ingresó un nuevo valor
-      if (newValue !== null) {
-        // Obtener los datos del personaje seleccionado
-        const { nombre, edad, quirk, category, status } = characterArray[characterIndex];
+          // Verificar si se ingresó un nuevo valor
+          if (newValue !== null) {
+            // Obtener los datos del personaje seleccionado
+            const { nombre, edad, quirk, category, status } = characterArray[characterIndex];
 
-        // Actualizar el campo correspondiente con el nuevo valor
-        switch (fieldToEdit) {
-          case "1":
-            characterArray[characterIndex].nombre = newValue;
-            break;
-          case "2":
-            characterArray[characterIndex].edad = newValue;
-            break;
-          case "3":
-            characterArray[characterIndex].quirk = newValue;
-            break;
-          case "4":
-            characterArray[characterIndex].category = newValue;
-            break;
-          case "5":
-            characterArray[characterIndex].status = newValue;
-            break;
+            // Actualizar el campo correspondiente con el nuevo valor
+            switch (fieldToEdit) {
+              case "1":
+                characterArray[characterIndex].nombre = newValue;
+                break;
+              case "2":
+                characterArray[characterIndex].edad = newValue;
+                break;
+              case "3":
+                characterArray[characterIndex].quirk = newValue;
+                break;
+              case "4":
+                characterArray[characterIndex].category = newValue;
+                break;
+              case "5":
+                characterArray[characterIndex].status = newValue;
+                break;
+            }
+
+            // Actualizar la tabla con los datos actualizados
+            updateCharacterList();
+
+            // Guardar los datos actualizados en el local storage
+            saveCharacterData(characterArray);
+
+            alert(`El campo "${fieldToEdit}" ha sido actualizado correctamente.`);
+          }
         }
-
-        // Actualizar la tabla con los datos actualizados
-        updateCharacterList();
-
-        // Guardar los datos actualizados en el local storage
-        saveCharacterData(characterArray);
-
-        alert(`El campo "${fieldToEdit}" ha sido actualizado correctamente.`);
       }
-    }
-  }
-});
+    });
 
     // Agregar el botón de edición a la celda de acciones
     actionsCell.appendChild(editButton);
@@ -187,6 +187,10 @@ editButton.addEventListener('click', () => {
         updateCharacterList();
         saveCharacterData(characterArray);
         alert("El personaje ha sido eliminado correctamente.");
+      }
+      else{
+      
+        alert("Gracias por su cancelación.");
       }
     });
 
@@ -208,7 +212,7 @@ editButton.addEventListener('click', () => {
 const changeCategoryButton = document.getElementById('changeCategoryButton');
 
 // Agregar un evento de clic al botón
-changeCategoryButton.addEventListener('click', function() {
+changeCategoryButton.addEventListener('click', function () {
   // Definir el diccionario de categorías
   const roles = {
     1: 'Búsqueda',
@@ -282,46 +286,49 @@ sortButton.addEventListener('click', () => {
   rows.forEach(row => characterTable.appendChild(row));
 });
 
-// busqueda- algoritmo de busqueda binario
-
 // Obtener elementos del DOM
 const searchInput = document.getElementById('characterNameFilter');
 const characterList = document.querySelector('#characterList');
 
 // Evento input del campo de búsqueda
-searchInput.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
-    event.preventDefault(); // Evitar que se envíe el formulario al presionar Enter
+searchInput.addEventListener('input', () => {
+  // Obtener el valor de búsqueda y eliminar espacios en blanco al inicio y al final
+  const searchValue = searchInput.value.trim();
 
-    const searchValue = searchInput.value.trim();
+  if (searchValue === '') {
+    // Si el valor de búsqueda está vacío, mostrar todos los personajes en la tabla
+    showAllCharacters();
+  } else {
+    // Filtrar el arreglo de personajes para obtener los que coincidan con el valor de búsqueda (ignorando mayúsculas y minúsculas)
+    const searchResults = characterArray.filter(character =>
+      character.nombre.toLowerCase().includes(searchValue.toLowerCase())
+    );
 
-    // Verificar si el valor de búsqueda está vacío
-    if (searchValue === '') {
-      updateCharacterList(characterArray);
-      return;
-    }
-
-    // Realizar la búsqueda binaria en el arreglo de personajes
-    const searchResultIndex = binarySearch(characterArray, searchValue);
-
-    if (searchResultIndex !== -1) {
-      const searchResult = characterArray[searchResultIndex];
-      // Actualizar la lista con el resultado de búsqueda
-      updateCharacterList([searchResult]);
-      alert(`El personaje "${searchValue}" se encontró en la posición ${searchResultIndex}.`);
-    } else {
-      // No se encontró ningún personaje con el nombre especificado
-      updateCharacterList([]);
-      alert(`No se encontró ningún personaje con el nombre "${searchValue}".`);
-    }
+    // Mostrar solo los personajes que coinciden con la búsqueda
+    showFilteredCharacters(searchResults);
   }
 });
 
+// Función para mostrar todos los personajes en la tabla
+const showAllCharacters = () => {
+  const characterRows = characterList.querySelectorAll('tbody tr');
+  characterRows.forEach(row => {
+    row.style.display = 'table-row';
+  });
+};
 
-
-
-
-
+// Función para mostrar solo los personajes filtrados en la tabla
+const showFilteredCharacters = (characters) => {
+  const characterRows = characterList.querySelectorAll('tbody tr');
+  characterRows.forEach(row => {
+    const characterName = row.dataset.name;
+    if (characters.some(character => character.nombre === characterName)) {
+      row.style.display = 'table-row';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+};
 
 // Actualizar la tabla de personajes al cargar la página
 window.addEventListener('DOMContentLoaded', () => {

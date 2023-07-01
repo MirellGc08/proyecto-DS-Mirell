@@ -1,0 +1,160 @@
+/* Custom CSS for My Hero Academy theme */
+body {
+  background-image: url(./imgs/zyro-image.png);
+  background-color: rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.container {
+  margin-top: 30px;
+}
+
+.form-label {
+  height: 25px;
+  color: #e9f4ff;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-family: cursive;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  color: #fff;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  font-family: monospace;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+  border-color: #138496;
+}
+
+/* Botón Ordenar */
+.btn-secondary .btn {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.btn-secondary.btn {
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary.btn:hover {
+  background-color: #d2d2d2;
+}
+
+/* Input Buscar por nombre */
+#characterNameFilter {
+  width: 310px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: #f8f9fa;
+}
+
+#changeCategoryButton {
+  background-color: #28a745;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+#changeCategoryButton:hover {
+  background-color: #1f8c39;
+}
+
+.encabezado {
+  font-family: "Pacifico", cursive;
+  font-size: 30px;
+  color: #000000;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: rgba( 255,255, 255,   0.5 ); /* Fondo transparente con 50% de opacidad */
+  padding: 10px;
+  text-shadow: -2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff,
+    2px 2px 0 #ffffff;
+}
+
+/* Tabla */
+#characterTableBody {
+  margin-top: 20px;
+}
+
+/* Botones animados */
+.btn-animated {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-animated:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: width 0.3s ease;
+  z-index: 1;
+}
+
+.btn-animated:hover:before {
+  width: 100%;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  color: #fff;
+  font-size: 15px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+  font-family: serif;
+  font-size: 17px;
+}
+
+.btn-secondary {
+  font-family: serif;
+  background-color: #ffee00;
+  color: #000000;
+  font-size: 17px;
+}
+
+.btn-secondary:hover {
+  background-color: #ffee00;
+}
+
+.btn-secondary:focus {
+  background-color: #ffee00;
+  color: #fff;
+  box-shadow: none;
+}
+
+.btn-secondary:active {
+  background-color: #ffee00;
+}
+
+#characterRegistry {
+  margin-bottom: 20px;
+}
+
+.my-3 input {
+  width: 300px;
+}
+
+.my-3 .form-control {
+  /*tamaño grande */
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/*tamaño pequeño*/
+.my-3 .form-control-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}

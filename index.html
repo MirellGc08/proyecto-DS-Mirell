@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <head>
-    
+
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script src="mockupCharacters.js"></script>
-      <script type="module" defer src="./main.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script defer="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script defer="mockupCharacters.js"></script>
+    <script type="module" defer src="./main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="/imgs/bnh-icon.png">
 
-   
     <title>My hero academy</title>
   </head>
 
@@ -40,40 +39,44 @@
       <div class="my-3">
         <label for="characterCategorycontrol" class="form-label">Categoría</label>
         <input type="text" class="form-control" id="characterCategorycontrol"
-          placeholder="Categoría a la que pertenece(héroe o villano)">
+          placeholder="Héroe o villano">
       </div>
       <div class="my-3">
         <label for="characterStatuscontrol" class="form-label">Estado</label>
         <input type="text" class="form-control" id="characterStatuscontrol"
-          placeholder="Estado en el que se encuentra  (vivo o fallecido)">
+          placeholder="Vivo/Fallecido/DEsconocido">
       </div>
       <button type="submit" class="btn btn-info mt-3" form="characterRegistry">Registrar</button>
   </form>
-  <section class="row">
-    <div class="col-6  text-center">
-      <button type="button" class="btn btn-secondary">Ordenar</button>
-    </div>
-  </section>
   <section class="container">
-    <div class=" col-6">
-      <label for="characterNameFilter" class="form-label">Buscar por nombre</label>
-<div class="input-group mb-3">
-  <input type="text" class="form-control" id="characterNameFilter" placeholder="Nombre de héroe o villano">
-</div>
+    <div class="row">
+      <div class="col-6">
+        <label for="characterNameFilter" class="form-label" id="searchInput">Buscar por nombre</label>
+        <div class="input-group mb-3">
+          <div id="searchResult">
+          <input type="text" class="form-control" id="characterNameFilter" placeholder="Nombre de héroe o villano">
+        </div>
+      </div>
+    </div>
+      
     </div>
   </section>
   <section class="container mt-3">
-    <h2> Personajes de My hero academy Registrados</h2>
+    <h2 class="encabezado text-center"> Personajes de My hero academy Registrados</h2>
     <button type="button" class="btn btn-success mt-3"  id="changeCategoryButton">Editar categoría</button>
+    <div class="col-6 text-end">
+      <button type="button" class="btn btn-secondary">Ordenar</button>
+    </div>
     <table class="table table-striped" id="characterTableBody" >
+      
       <thead>
         <tr>
-          <td class="table-success  text-center">Nombre</td>
-          <td class="table-danger  text-center">Edad</td>
-          <td class="table-warning  text-center ">Quirk</td>
-          <td class="table-primary  text-center">Categoría</td>
-          <td class="table-info  text-center">Estado</td>
-          <td class="table-dark text-center">Acciones </td>
+          <th class="table-success  text-center">Nombre</th>
+          <th class="table-danger  text-center">Edad</th>
+          <th class="table-warning  text-center">Quirk</th>
+          <th class="table-primary  text-center">Categoría</th>
+          <th class="table-info  text-center">Estado</th>
+          <th class="table-dark text-center">Acciones</th>
         </tr>
       </thead>
       <tbody id="characterList">
